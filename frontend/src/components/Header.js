@@ -16,7 +16,7 @@ const Header = () => {
   const [logoutApiCall] = useLogoutMutation();
   const logoutHandler = async() =>{
     try {
-      await logoutApiCall().unwrap()
+      //await logoutApiCall().unwrap()
       dispatch(logout({}));
       localStorage.removeItem('userInfo');
       navigate('/login')
