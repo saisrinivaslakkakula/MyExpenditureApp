@@ -32,9 +32,14 @@ const LoginScreen = () => {
         //alert("Done")
         try {
             const res = await login({email, password}).unwrap();
-            console.log(res)
-            dispatch(setCredentials({...res}));
+            const {success} = res;
+            if (success){
+                dispatch(setCredentials({...res}));
             navigate(redirect)
+            } else {
+                toast.error("Login Failed. Please try again.")
+            }
+            
         } catch (error) {
             toast.error(error?.data?.message || error.error)
         }
